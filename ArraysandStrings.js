@@ -26,6 +26,33 @@
 // console.log(Two_Sum([3, 2, 4], 6))
 // console.log(Two_Sum([3, 3],9))
 
+
+
+//works for only sorted arr
+// function twoSumSorted(arr, target) {
+//     let l=0;
+//     let r=arr.length-1;
+//     while(r>l){
+//         const sum=arr[l]+arr[r];
+//         if(sum===target){
+//             return [l,r]
+//         }else if(sum>target){
+//             r--;
+//         }else{
+//             l++;
+//         }
+//     }
+//     return -1
+// }
+
+// console.log(twoSumSorted([2,7,11,15],9)) // [0,1]
+// console.log(twoSumSorted([3, 2, 4], 6))  // [1,2] but this is not sorted array so it will return -1
+// console.log(twoSumSorted([3, 3],6))      // -1
+
+
+
+
+
 // 1. Two_Sum using Map - O(n)
 // function Two_Sum(arr,target){
 //    const map = new Map()
