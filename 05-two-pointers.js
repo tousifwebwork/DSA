@@ -204,36 +204,111 @@
 //     return triplet;
 // };
 
-const Three_Sum = (arr) => {
-    let triplet = [];
+// const Three_Sum = (arr) => {
+//     let triplet = [];
 
+//     arr.sort((a, b) => a - b);
+
+//     for (let i = 0; i < arr.length - 2; i++) {
+//         let l = i + 1;
+//         let r = arr.length - 1;
+
+//         while (l < r) {
+//             let sum = arr[i] + arr[l] + arr[r];
+
+//             if (sum === 0) {
+//                 triplet.push([arr[i], arr[l], arr[r]]);
+//                 l++;
+//                 r--;
+//             } 
+//             else if (sum < 0) {
+//                 l++;
+//             } 
+//             else {
+//                 r--;
+//             }
+//         }
+//     }
+
+//     return triplet;
+// };
+// console.log(Three_Sum([-1,0,1,2,-1,-4]))
+// console.log(Three_Sum([0,1,1]))
+// console.log(Three_Sum([0,0,0]))
+
+
+
+// O(n^2)
+// function maxWater(arr) {
+//   let max=0;
+//   for(let i=0;i<arr.length;i++){
+//     for(let j=i+1;j<arr.length;j++){
+//         let wid = j-i;
+//         let hgt = Math.min(arr[i],arr[j]);
+//         let area = wid*hgt;
+//         max = Math.max(area,max)
+//     }
+//   }
+//   return max;
+// }
+// console.log(maxWater([1,8,6,2,5,4,8,3,7] )) //49
+// console.log(maxWater([1,1] )) //1
+
+// function maxWater(arr) {
+//   let max=0;
+//   let i=0;
+//   let j=arr.length-1;
+//   while(i<j){
+//     let w=j-i;
+//     let h=Math.min(arr[i],arr[j]);
+//     let area=w*h;
+//     max=Math.max(area,max);
+//     if(arr[i]<arr[j]){
+//         i++;
+//     }else{
+//         j--;
+//     }
+//   }
+//   return max;
+// }
+// console.log(maxWater([1,8,6,2,5,4,8,3,7] )) //49
+// console.log(maxWater([1,1] )) //1
+
+
+
+
+
+
+
+
+//3 Sum Closest
+
+function threeSumClosest(arr, target) {
     arr.sort((a, b) => a - b);
+    let closestSum = arr[0] + arr[1] + arr[2];
 
-    for (let i = 0; i < arr.length - 2; i++) {
-        let l = i + 1;
-        let r = arr.length - 1;
+    for(let i=0;i<arr.length-2;i++){
+        let j=i+1;
+        let k= arr.length-1;
+        
+        while(j<k){
+          let sum = arr[i]+arr[j]+arr[k];
+          if(Math.abs(target-sum) < Math.abs(target-closestSum))
+            closestSum = sum
 
-        while (l < r) {
-            let sum = arr[i] + arr[l] + arr[r];
 
-            if (sum === 0) {
-                triplet.push([arr[i], arr[l], arr[r]]);
-                l++;
-                r--;
-            } 
-            else if (sum < 0) {
-                l++;
-            } 
-            else {
-                r--;
-            }
+          if(sum<target)
+            j++;
+          else if(sum>target)
+            k--;
+          else
+            return sum
+
         }
+
     }
+    return closestSum
 
-    return triplet;
-};
- 
-
-console.log(Three_Sum([-1,0,1,2,-1,-4]))
-console.log(Three_Sum([0,1,1]))
-console.log(Three_Sum([0,0,0]))
+}
+console.log(threeSumClosest([-1,2,1,-4],1)); //2
+console.log(threeSumClosest([0,0,0],1));     //0
