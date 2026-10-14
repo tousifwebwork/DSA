@@ -140,24 +140,110 @@
 
 
 //7. Longest substring without repeating characters (LeetCode 3)
-function long_str(str) {
-    let left = 0;
-    let maxLength = 0;
-    let set = new Set();
+// function long_str(str) {
+//     let left = 0;
+//     let maxLength = 0;
+//     let set = new Set();
 
-    for (let right = 0; right < str.length; right++) {
+//     for (let right = 0; right < str.length; right++) {
 
-        while (set.has(str[right])) {
-            set.delete(str[left]);
-            left++;
-        }
+//         while (set.has(str[right])) {
+//             set.delete(str[left]);
+//             left++;
+//         }
 
-        set.add(str[right]);
+//         set.add(str[right]);
 
-        maxLength = Math.max(maxLength, right - left + 1);
-    }
+//         maxLength = Math.max(maxLength, right - left + 1);
+//     }
 
-    return maxLength;
-}
+//     return maxLength;
+// }
 
-console.log(long_str("abcccir")); // 3 
+// console.log(long_str("abcccir")); // 3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Two pointers
+// function sum_target(arr,target){
+//     let l=0,r=arr.length-1;
+//     while(l<r){
+//         let sum=arr[l]+arr[r];
+//         if(sum<target)l++;
+//         if(sum>target)r--;
+//         if(sum==target)return[l,r]
+//     }
+// }
+
+// function sum_target(arr,target){
+//     let map = new Map();
+//     for(let i=0;i<arr.length;i++){
+//         let need=target-arr[i];
+//         if(map.has(need)){
+//             return [map.get(need),i]
+//         }
+//         map.set(arr[i],i)
+//     }
+// }
+// console.log(sum_target([1, 2, 3, 4, 5],5))
+
+
+
+
+
+
+//Maximum Sum of a Subarray of Size K
+// function maxArr(arr,k){
+//     let sum=0;
+//     for(let i=0;i<k;i++)sum+=arr[i];
+//     let best=sum;
+//     for(let i=k;i<arr.length;i++){
+//         sum=sum+arr[i]-arr[i-k];
+//         best=Math.max(best,sum)
+//     }
+//     return best
+// }
+// console.log(maxArr([2, 1, 5, 1, 3,2],4))//11
+
+
+
+
+
+// //Find the length of the longest substring without repeating characters.
+// function long(str){
+//     let left=0;
+//     let maxLen=0;
+//     let set = new Set();
+//     for(let right=0;right<str.length;right++){
+//         if(set.has(str[right])){
+//             set.delete(str[right]);
+//             left++
+//         }
+//         set.add(str[right]);
+//         maxLen=Math.max(maxLen,right-left+1);
+//     }
+//     return maxLen;
+// }
+// console.log(long("abcabcbbe"))
+// console.log(long("abcd ewn daed".trim()));
+
+ 
+// console.log("abcd ewn daed   ".replace(/\s/g,""));
+
+
+
+console.log("orignal: abc de?!@#%");
+//console.log("abc de".replace(/\s/g,""));
+console.log("abc de?!@#%".replace(/[?!@#%\s]/g,""));
+console.log("abc de?!@#%".replace(/[a-zA-Z\s]/g,""));
