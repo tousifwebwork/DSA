@@ -19,19 +19,15 @@
 // console.log("C")
 
 
-// // setTimeout(()=>{
-// //     console.log("A")
-// // },1000)
-// // queueMicrotask(()=>{
-// //     console.log("B")
-// // })
-// // setTimeout(()=>{
-// //     console.log("C")
-// // })
-
-
-
-
+// setTimeout(()=>{
+//     console.log("A")
+// },1000)
+// queueMicrotask(()=>{
+//     console.log("B")
+// })
+// setTimeout(()=>{
+//     console.log("C")
+// })
 
 
 
@@ -44,3 +40,11 @@
 // queueMicrotask(() => console.log("mic3"));
 // setTimeout(() => console.log("mac3"), 1000);
 // queueMicrotask(() => console.log("mic4"));
+
+
+// console.log("A")
+// queueMicrotask(()=>console.log("B"));
+// setTimeout(()=>console.log("C"), 0);
+// console.log("D")
+
+
