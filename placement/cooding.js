@@ -88,3 +88,76 @@ function Availability(arr, start, end) {
 
 
 
+function maxSum(arr,k){
+    if(arr.length<k)return 0;
+
+    let sum=0;
+    for(let i=0;i<k;i++)sum+=arr[i];
+
+    let max=sum;
+    for(let j=k;j<arr.length;j++){
+        sum = sum + arr[j] - arr[j-k];
+        if(max<sum)max=sum
+    }
+
+    return max
+}
+//console.log(maxSum([2,1,5,1,3,2],3))
+//console.log(maxSum([-1,-2,-3,-4],2))
+//console.log(maxSum([5],1))
+
+
+function tallerBuilding(height){
+   let r=new Array(height.length).fill(0);
+   for(let i=0;i<height.length;i++){
+    for(let j=i+1;j<height.length;j++){
+        if(height[j]>height[i]){
+            r[i]=j-i;
+            break
+        }
+    }
+   }
+   return r
+}
+// console.log(tallerBuilding([4,2,3,5,1,6]))
+// console.log(tallerBuilding([5,4,3,2]))
+// console.log(tallerBuilding([1,2,3,4]))
+
+
+
+
+// function nearbyDuplicates(arr,k){
+//         for (let i = 0; i < arr.length; i++) { 
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[i] === arr[j] && Math.abs(i - j) <= k) {
+//                 return true;
+//             }
+//         }   
+//     }
+//     return false;
+// }
+function nearbyDuplicates(arr, k) {
+    const window = new Set();
+    
+    for (let i = 0; i < arr.length; i++) {
+        // 1. If the duplicate exists within the last 'k' elements, we found it!
+        if (window.has(arr[i])) {
+            return true;
+        }
+        
+        // 2. Add the current element to our sliding window
+        window.add(arr[i]);
+        
+        // 3. Keep the window size exactly equal to 'k' by removing the oldest element
+        if (window.size > k) {
+            window.delete(arr[i - k]);
+        }
+    }
+    
+    return false;
+}
+
+
+console.log(nearbyDuplicates([1,2,3,1],3))     //true
+console.log(nearbyDuplicates([1,0,1,1],1))     //true
+console.log(nearbyDuplicates([1,2,3,1,2,3],2)) //false
