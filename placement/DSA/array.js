@@ -46,9 +46,9 @@ function thirdLargest(arr) {
   return third === -Infinity ? -1 : third
 
 }
-console.log(thirdLargest([10, 5, 20, 8])); // 10
-console.log(thirdLargest([7, 7, 7]));      // -1
-console.log(thirdLargest([3]));            // -1
+//console.log(thirdLargest([10, 5, 20, 8])); // 10
+//console.log(thirdLargest([7, 7, 7]));      // -1
+//console.log(thirdLargest([3]));            // -1
 
 
 
