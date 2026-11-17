@@ -94,8 +94,40 @@ function commonElement_Map(arr1,arr2,arr3){
     return result
 }
  
-console.log(commonElement_Map(
-    [1,2,3,4,5],
-    [2,3,5,7],
-    [3,5,2]
-))
+// console.log(commonElement_Map(
+//     [1,2,3,4,5],
+//     [2,3,5,7],
+//     [3,5,2]
+// ))
+
+
+
+//O(n)
+function countChar(str){
+   let map=new Map();
+   for(let i of str)map.set(i,(map.get(i)||0)+1);
+
+   let res=[]
+   for(let [key,val] of map){
+     res.push(key+val)
+   }
+
+   return res.join("")
+}
+
+//O(n)
+function countChar2(str){
+    let res="";
+    let count=1;
+    for(let i=1;i<=str.length;i++){
+       if(str[i]==str[i-1])count++
+       else{
+          res+=str[i-1]+count;
+          count=1
+       }
+    }
+    return res
+}
+
+//console.log(countChar("aaabbc")); // a3b2c1
+console.log(countChar2("aaabbc")); // a3b2c1
