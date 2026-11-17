@@ -175,5 +175,13 @@ var orangesRotting = function(grid) {
     return freshCount === 0 ? minutes : -1;
 };
 
-console.log(orangesRotting([[2,1,1],[1,1,0],[0,1,1]])) // Output: 4
+// console.log(orangesRotting([[2,1,1],[1,1,0],[0,1,1]])) // Output: 4
+
+
+
+
+
+
+
+
 
