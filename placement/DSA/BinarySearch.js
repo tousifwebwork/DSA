@@ -33,30 +33,21 @@ const isBad = (v) => v >= 4;
 
 
 
-function insert(arr,target){
-    let left=0;
-    let right=arr.length-1; 
+function insert(nums,target){
+      let left = 0;
+  let right = nums.length;                  // one past the end: "insert at end" is a valid answer
 
-    while(left<=right){
-        let mid=left+Math.floor((right-left)/2); 
-
-        if(arr[mid]===target){
-            return mid
-        }
-        else if(arr[mid]<target){
-           left = mid+1
-        }
-        else{
-            right = mid-1 
-        } 
-    }
-
-    return left
+  while (left < right) {
+    const mid = left + Math.floor((right - left) / 2);
+    if (nums[mid] >= target) right = mid;   // mid could be the first position ≥ target
+    else left = mid + 1;
+  }
+  return left;
 }
-// console.log(insert([1, 3, 5, 6],5)); //2
-// console.log(insert([1, 3, 5, 6],2)); //
-// console.log(insert([1, 3, 5, 6],7)); //
-// console.log(insert([1, 3, 5, 6],0)); //
+console.log(insert([1, 3, 5, 6],5)); //2
+console.log(insert([1, 3, 5, 6],2)); //
+console.log(insert([1, 3, 5, 6],7)); //
+console.log(insert([1, 3, 5, 6],0)); //
 
 
 function search(nums, target) {
