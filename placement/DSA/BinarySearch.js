@@ -89,6 +89,41 @@ function search(nums, target) {
     return -1
 
 }
-console.log(search([4, 5, 6, 7, 0, 1, 2],0))
-console.log(search([4, 5, 6, 7, 0, 1, 2],3))
-console.log(search([1],0))
+// console.log(search([4, 5, 6, 7, 0, 1, 2],0))
+// console.log(search([4, 5, 6, 7, 0, 1, 2],3))
+// console.log(search([1],0))
+
+
+
+
+let splitArray = (nums,k) => {
+
+    let left = Math.max(...nums);
+    let right = nums.reduce((a,b)=>a+b,0);
+
+    while(left<right){
+        let mid = left + Math.floor((right-left)/2); 
+        let count=1; 
+        let sum=0;
+
+        for(let num of nums){
+            if(num+sum>mid){
+                count++;
+                sum = num;
+            }else{
+                sum += num
+            }
+        }
+
+        if(count>k){
+            left = mid+1
+        }else{
+            right = mid
+        }
+
+    }
+    return left
+}
+console.log(splitArray([7, 2, 5, 10, 8], 2)); // 18
+console.log(splitArray([1, 2, 3, 4, 5], 2));  // 9
+console.log(splitArray([1, 4, 4], 3));        // 4
